@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070a14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+    <meta name="author" content="Vijayraj Palanisamy" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <script>
+      (function () {
+        var d = document.documentElement, t, m;
+        try { t = localStorage.getItem('theme'); m = localStorage.getItem('motion'); } catch (e) {}
+        d.dataset.theme = t === 'light' || t === 'dark' ? t : 'dark';
+        var reduce = m === 'reduce' || (m !== 'full' && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+        d.classList.add(reduce ? 'reduce-motion' : 'motion');
+        // safety net: never leave content hidden if the script bundle fails to load
+        setTimeout(function () { if (!window.__hydrated) d.classList.remove('motion'); }, 2500);
+      })();
+    </script>
+    <!--app-head-->
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
