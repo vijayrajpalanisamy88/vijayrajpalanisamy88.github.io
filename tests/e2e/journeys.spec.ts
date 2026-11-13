@@ -148,12 +148,14 @@ test('visitor explores an architecture diagram', async ({ page }) => {
 });
 
 test('no resume download and no employer name anywhere (owner decision)', async ({ page, request }) => {
-  expect((await request.get('/Vijayraj_Palanisamy_Resume.pdf')).status()).toBe(404);
-  for (const path of ['/', '/projects/promptflowengine/', '/sitemap.xml']) {
+  // GitHub Pages answers 404 here; the local preview server falls back to the homepage (200).
+  // Either way, no PDF may be served.
+  const pdf = await request.get('/Vijayraj_Palanisamy_Resume.pdf');
+  expect(pdf.headers()['content-type'] ?? '').not.toContain('application/pdf');
+  for (const path of ['/', '/projects/promptflowengine/', '/projects/plate-maestro/', '/sitemap.xml']) {
     const body = await (await request.get(path)).text();
     expect(body, path).not.toMatch(/astra\s*zeneca|plate\s*maestro|appito/i);
   }
-  expect((await request.get('/projects/plate-maestro/')).status()).toBe(404);
   await page.goto('/');
   await expect(page.locator('a[download], a[href$=".pdf"]')).toHaveCount(0);
   await expect(page.locator('#resume')).toHaveCount(0);
