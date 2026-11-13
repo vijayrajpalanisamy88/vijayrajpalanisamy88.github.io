@@ -68,12 +68,17 @@ jobs:
         run: |
           set -e
           base="${{ steps.deployment.outputs.page_url }}"
-          for path in "" "projects/promptflowengine/" "Vijayraj_Palanisamy_Resume.pdf" "sitemap.xml"; do
+          check() { # path expected-status
             for i in 1 2 3 4 5 6; do
-              code=$(curl -s -o /dev/null -w '%{http_code}' "${base}${path}")
-              [ "$code" = "200" ] && break
+              code=$(curl -s -o /dev/null -w '%{http_code}' "${base}$1")
+              [ "$code" = "$2" ] && break
               sleep 10
             done
-            echo "${base}${path} -> $code"
-            [ "$code" = "200" ]
-          done
+            echo "${base}$1 -> $code (expected $2)"
+            [ "$code" = "$2" ]
+          }
+          for path in "" "projects/promptflowengine/" "sitemap.xml"; do check "$path" 200; done
+          # removed by the owner: must stay gone
+          check "Vijayraj_Palanisamy_Resume.pdf" 404
+          check "projects/plate-maestro/" 404
+          ! curl -s "${base}" | grep -qiE 'astra ?zeneca|plate maestro'
