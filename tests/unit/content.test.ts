@@ -53,11 +53,11 @@ describe('projects', () => {
   });
 });
 
-describe('experience (must match the resume)', () => {
-  it('lists the four resume roles with exact titles and dates', () => {
+describe('experience', () => {
+  it('lists the four roles with exact titles and dates', () => {
     expect(experience.map((r) => `${r.title}|${r.company}|${r.period}`)).toEqual([
-      'Senior Consultant|AstraZeneca|Feb 2023 – Present',
-      'Analyst|AstraZeneca|Jan 2016 – Jun 2023',
+      'Senior Consultant|Global life-sciences company|Feb 2023 – Present',
+      'Analyst|Global life-sciences company|Jan 2016 – Jun 2023',
       '.NET Developer|GAVS Technologies|May 2013 – Dec 2015',
       'SAP Business One Consultant|Euphoros|Mar 2011 – May 2013',
     ]);
@@ -87,11 +87,13 @@ describe('privacy', () => {
     // generic Indian mobile pattern (+91 optional, 10 digits starting 6-9)
     for (const f of files) expect(readFileSync(f, 'utf8'), f).not.toMatch(/(\+91[\s-]?)?[6-9]\d{4}[\s-]?\d{5}/);
   });
-  it('published resume PDF does not contain the phone number', () => {
-    const pdf = readFileSync(join('public', profile.resumePdf));
-    expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
-    // text streams are compressed, so this is a smoke check; the redaction itself was verified by text extraction
-    expect(/\+91[\s-]?[6-9]\d{9}/.test(pdf.toString('latin1'))).toBe(false);
+  it('the current employer and its internal project names are never mentioned (owner decision)', () => {
+    const banned = /astra\s*zeneca|plate\s*maestro|appito|\bHTS\b/i;
+    for (const f of [...files, 'README.md']) expect(readFileSync(f, 'utf8'), f).not.toMatch(banned);
+  });
+  it('no resume is published (owner decision)', () => {
+    const published = walk('public').map((f) => f.toLowerCase());
+    expect(published.filter((f) => f.endsWith('.pdf') || f.includes('resume'))).toEqual([]);
   });
   it('no secrets or API keys in source', () => {
     for (const f of files) expect(readFileSync(f, 'utf8'), f).not.toMatch(/(sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,})/);

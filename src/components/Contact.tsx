@@ -19,7 +19,6 @@ export function Contact() {
     { icon: 'mail', label: 'Email', value: profile.email, href: `mailto:${profile.email}`, external: false },
     { icon: 'github', label: 'GitHub', value: `@${profile.githubHandle}`, href: profile.github, external: true },
     ...(profile.linkedin ? [{ icon: 'linkedin', label: 'LinkedIn', value: 'LinkedIn profile', href: profile.linkedin, external: true }] : []),
-    { icon: 'download', label: 'Resume', value: 'PDF download', href: profile.resumePdf, external: false, download: true },
     { icon: 'external', label: 'Portfolio', value: SITE_URL.replace('https://', ''), href: `${SITE_URL}/`, external: false },
   ];
 
@@ -49,7 +48,6 @@ export function Contact() {
               <a
                 href={c.href}
                 {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                {...('download' in c && c.download ? { download: true } : {})}
                 className="glass card-hover flex h-full items-center gap-4 p-5"
               >
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-surface-2 text-accent-2">

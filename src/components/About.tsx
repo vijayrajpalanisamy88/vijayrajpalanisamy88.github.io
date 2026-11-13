@@ -2,7 +2,7 @@ import { profile } from '../data/profile';
 import { Section } from './Section';
 
 const glance = [
-  { k: 'Now', v: 'Senior Consultant, AstraZeneca (R&D IT / Digital DevOps), since Feb 2023' },
+  { k: 'Now', v: 'Senior Consultant, R&D IT / Digital DevOps at a global life-sciences company, since Feb 2023' },
   { k: 'Experience', v: '15+ years: ERP consulting, .NET development, life-sciences enterprise IT' },
   { k: 'Core stack', v: 'C#, .NET, Web APIs, SQL, Python, AWS, GitHub Actions' },
   { k: 'AI', v: 'AWS Bedrock RAG (enterprise); LLM orchestration, MCP, pgvector RAG, on-device AI (own products)' },
@@ -20,8 +20,8 @@ export function About() {
             years as a <strong className="text-fg">.NET developer</strong> at GAVS Technologies building applications to client requirements.
           </p>
           <p>
-            Since 2016 I have worked at <strong className="text-fg">AstraZeneca</strong>, first improving operational and digital processes, and
-            since 2023 as a Senior Consultant in R&amp;D IT / Digital DevOps. There I support lab-facing applications, modernize .NET
+            Since 2016 I have worked for a <strong className="text-fg">global life-sciences company</strong>, first improving operational and digital processes, and
+            since 2023 as a Senior Consultant in R&amp;D IT / Digital DevOps. There I support R&amp;D digital applications, modernize .NET
             applications, move workloads from on-premises to the cloud, build GitHub Actions pipelines and AWS Lambda monitoring, and delivered{' '}
             <strong className="text-fg">AWS Bedrock RAG</strong> question answering over vendor documentation.
           </p>

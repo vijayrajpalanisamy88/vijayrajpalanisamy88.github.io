@@ -1,6 +1,6 @@
 /**
  * AI engineering journey + delivery process.
- * Dates are taken from the resume or from first-commit dates in my repositories.
+ * Dates come from my career history or from first-commit dates in my repositories.
  * `kind` distinguishes professional delivery from personal products and from learning.
  */
 export type JourneyKind = 'professional' | 'product' | 'learning';
@@ -23,7 +23,7 @@ export const journey: Milestone[] = [
   },
   {
     when: '2016 – 2023',
-    title: 'Life-sciences operations at AstraZeneca',
+    title: 'Life-sciences operations and digital process improvement',
     kind: 'professional',
     text: 'Workflow analysis, data-driven reporting and process improvement across cross-functional teams.',
     topics: ['Process improvement', 'Reporting'],
@@ -32,7 +32,7 @@ export const journey: Milestone[] = [
     when: '2023 →',
     title: 'Generative AI in the enterprise',
     kind: 'professional',
-    text: 'Delivered AWS Bedrock RAG question answering over vendor documents, used Microsoft Copilot Studio, explored ML prediction for HTS lab sessions, and applied an AI-assisted, specification-driven lifecycle on Plate Maestro.',
+    text: 'Delivered AWS Bedrock RAG question answering over vendor documents, used Microsoft Copilot Studio, and applied an AI-assisted, specification-driven delivery lifecycle in enterprise R&D IT.',
     topics: ['AWS Bedrock', 'RAG', 'Copilot Studio', 'SDD'],
   },
   {
@@ -98,7 +98,7 @@ export interface AiStep {
 }
 
 /**
- * AI-native lifecycle. "practised" = used on Plate Maestro and/or my products (resume + repos).
+ * AI-native lifecycle. "practised" = used at work and/or in my products.
  * "experimental" = what I am trying in my own products, not an established method.
  */
 export const aiLifecycle: AiStep[] = [

@@ -76,7 +76,7 @@ function AiLifecycle() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="text-xl font-semibold">AI-native lifecycle: how AI fits into the work</h3>
         <div className="flex flex-wrap gap-2 text-xs">
-          <span className="chip !text-accent-2">● Practised: Plate Maestro and my products</span>
+          <span className="chip !text-accent-2">● Practised: at work and in my products</span>
           <span className="chip !text-warn">◌ Experimental: my own products only</span>
         </div>
       </div>

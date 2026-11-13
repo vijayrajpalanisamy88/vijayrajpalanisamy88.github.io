@@ -1,6 +1,7 @@
 /**
- * Employment history — copied from the resume (11 Nov 2026). Titles and dates must match it exactly.
- * Confidential work is described only at the level the resume already states publicly.
+ * Employment history. Titles and dates match my career history.
+ * The employer for 2016 - present is intentionally not named; describe that work generically
+ * (no employer, product, project or lab names, no internal metrics).
  */
 export interface Role {
   id: string;
@@ -14,40 +15,33 @@ export interface Role {
   summary: string;
   highlights: string[];
   tech: string[];
-  metrics?: { value: string; label: string }[];
 }
 
 export const experience: Role[] = [
   {
-    id: 'astrazeneca-senior-consultant',
+    id: 'senior-consultant',
     title: 'Senior Consultant',
-    company: 'AstraZeneca',
+    company: 'Global life-sciences company',
     location: 'Chennai',
     start: '2023-02',
     end: null,
     period: 'Feb 2023 – Present',
     domain: 'Life sciences · R&D IT / Digital DevOps',
     summary:
-      'Digital engineering for R&D IT, working with cross-functional stakeholders on lab-facing applications, solution reliability and user experience.',
+      'Digital engineering for R&D IT, working with cross-functional stakeholders on R&D digital applications, solution reliability and user experience.',
     highlights: [
-      'Applied specification-driven development to Plate Maestro: clarified requirements, defined implementation-ready specifications and acceptance criteria, and aligned development and validation to the agreed scope.',
-      'Used an AI-assisted development lifecycle on Plate Maestro for requirements analysis, design decisions, implementation refinement, test-case preparation and developer-led review.',
+      'Applied specification-driven development: clarified requirements, defined implementation-ready specifications and acceptance criteria, and aligned development and validation to the agreed scope.',
+      'Used an AI-assisted development lifecycle for requirements analysis, design decisions, implementation refinement, test-case preparation and developer-led review.',
       'Implemented GitHub Actions CI/CD workflows and supported .NET application modernization and on-premises-to-cloud migration.',
       'Used AWS Lambda for application monitoring with Microsoft Teams notifications.',
       'Delivered AWS Bedrock and RAG-based question answering over vendor documentation.',
-      'Explored ML-based prediction analysis for inactive HTS lab sessions.',
-      'Supported cost-optimization work on the Appito / Digital Lab project.',
     ],
     tech: ['C#', '.NET', 'AWS Bedrock', 'RAG', 'AWS Lambda', 'GitHub Actions', 'Python', 'Microsoft Copilot Studio'],
-    metrics: [
-      { value: '20%', label: 'improvement in project delivery timelines from streamlined delivery processes' },
-      { value: '15%', label: 'productivity increase from workflow enhancements I identified' },
-    ],
   },
   {
-    id: 'astrazeneca-analyst',
+    id: 'analyst',
     title: 'Analyst',
-    company: 'AstraZeneca',
+    company: 'Global life-sciences company',
     location: 'Chennai',
     start: '2016-01',
     end: '2023-06',
@@ -106,26 +100,3 @@ export const professionalDevelopment = [
   },
 ];
 
-/** Enterprise work items listed on the resume. No confidential detail beyond what the resume states. */
-export const enterpriseHighlights = [
-  {
-    name: 'Plate Maestro',
-    context: 'AstraZeneca · lab-facing application',
-    text: 'Specification-driven development and an AI-assisted lifecycle: clear feature specifications (scope, workflow, business rules, edge cases, non-functional needs, measurable acceptance criteria) used as the shared reference for analysis, design, implementation, code review, test design and release readiness, with engineers reviewing every AI suggestion.',
-  },
-  {
-    name: 'Vendor-document intelligence',
-    context: 'AstraZeneca',
-    text: 'RAG-based question answering over vendor documentation using AWS Bedrock.',
-  },
-  {
-    name: 'HTS lab inactive sessions',
-    context: 'AstraZeneca',
-    text: 'Prediction analysis with machine learning for inactive high-throughput screening lab sessions.',
-  },
-  {
-    name: 'Appito / Digital Lab',
-    context: 'AstraZeneca',
-    text: 'Supported project cost-optimization initiatives.',
-  },
-];

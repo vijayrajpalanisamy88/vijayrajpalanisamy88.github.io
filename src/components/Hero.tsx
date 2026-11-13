@@ -99,9 +99,6 @@ export function Hero() {
             <Link to="/#projects" className="btn btn-primary">
               View projects <Icon name="arrowRight" size={16} />
             </Link>
-            <a href={profile.resumePdf} download className="btn btn-ghost" data-testid="hero-resume">
-              <Icon name="download" size={16} /> Download resume
-            </a>
             <a href={profile.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" aria-label="GitHub profile (opens in new tab)">
               <Icon name="github" size={16} /> GitHub
             </a>

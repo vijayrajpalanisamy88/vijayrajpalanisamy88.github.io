@@ -618,38 +618,6 @@ export const projects: Project[] = [
     roadmap: ['Real transaction and guideline-value data sources.', 'AI price-prediction models, only once backtests justify publishing them.'],
   },
 
-  // ───────────────────────────────────────────── Enterprise
-  {
-    slug: 'plate-maestro',
-    name: 'Plate Maestro (enterprise)',
-    tagline: 'Lab-facing R&D application at AstraZeneca — specification-driven, AI-assisted delivery',
-    summary:
-      'Enterprise work I can describe only at the level stated on my resume: specification-driven development and an AI-assisted lifecycle applied to a lab-facing application.',
-    categories: ['Enterprise'],
-    featured: false,
-    status: { kind: 'enterprise', label: 'Enterprise', note: 'Confidential. No code, screenshots or internal details are published.' },
-    period: '2023 – present',
-    links: [],
-    repo: 'Proprietary.',
-    overview:
-      'Plate Maestro is a lab-facing application in AstraZeneca R&D IT. My contribution was the delivery method: turning business and user needs into implementation-ready specifications, then using those specifications as the shared reference for AI-assisted analysis, design, implementation, code review, test design and release readiness.',
-    problem: 'Ambiguous requirements in lab software cause rework and validation gaps.',
-    users: ['R&D lab users', 'The engineering and validation team'],
-    role: 'Specification-driven development and an AI-assisted development lifecycle, with engineers reviewing every AI suggestion.',
-    stack: [{ group: 'Practice', items: ['Specification-driven development', 'AI-assisted SDLC', 'Acceptance criteria', 'Test design', '.NET'] }],
-    features: [
-      'Feature specifications covering scope, workflow, business rules, edge cases, non-functional needs and measurable acceptance criteria.',
-      'Traceability between the approved specification, the delivered functionality, the verification scenarios and follow-up changes.',
-    ],
-    challenges: [
-      {
-        title: 'Using AI without losing control',
-        approach: 'The specification is the source of truth. AI output is a suggestion that engineers review against it.',
-      },
-    ],
-    outcomes: ['Development and validation aligned to the agreed scope (see resume).'],
-    roadmap: [],
-  },
 
   // ───────────────────────────────────────────── In development
   {
@@ -713,4 +681,4 @@ export const projects: Project[] = [
 
 export const featuredProjects = projects.filter((p) => p.featured);
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
-export const allCategories: Category[] = ['AI product', 'SaaS', 'Mobile', 'Developer tools', 'Domain platform', 'Enterprise'];
+export const allCategories: Category[] = ['AI product', 'SaaS', 'Mobile', 'Developer tools', 'Domain platform'];

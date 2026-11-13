@@ -11,7 +11,7 @@ export function Experience() {
       id="experience"
       eyebrow="experience"
       title="Career timeline"
-      lead="Titles and dates exactly as on my resume. Enterprise work is described only at the level my resume already states publicly."
+      lead="Fifteen years across ERP consulting, .NET development and enterprise R&D IT. Details of current employer work are kept confidential."
     >
       <ol className="relative mt-12 space-y-6 border-l border-line pl-6 sm:pl-10">
         <span
@@ -55,16 +55,6 @@ export function Experience() {
                       <li key={h}>{h}</li>
                     ))}
                   </ul>
-                  {r.metrics && (
-                    <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-                      {r.metrics.map((m) => (
-                        <div key={m.label} className="rounded-xl border border-line bg-surface-2 p-4">
-                          <dt className="text-sm text-muted">{m.label}</dt>
-                          <dd className="order-first text-2xl font-semibold text-fg">{m.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  )}
                   <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technologies">
                     {r.tech.map((t) => (
                       <li key={t} className="chip">

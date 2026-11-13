@@ -20,7 +20,6 @@ const person = {
   name: profile.name,
   url: `${SITE_URL}/`,
   jobTitle: 'Senior Consultant',
-  worksFor: { '@type': 'Organization', name: 'AstraZeneca' },
   address: { '@type': 'PostalAddress', addressLocality: 'Chennai', addressCountry: 'IN' },
   sameAs: [profile.github, profile.linkedin].filter(Boolean),
   knowsAbout: ['C#', '.NET', 'ASP.NET Core', 'Full-stack development', 'Generative AI', 'Retrieval-augmented generation', 'AWS Bedrock', 'Agentic AI', 'Prompt engineering', 'Model Context Protocol', 'GitHub Actions', 'AWS'],
@@ -32,7 +31,7 @@ export function headFor(path: string): Head {
     return {
       title: `${profile.name} — C#/.NET Engineer · GenAI & Agentic AI Builder`,
       description:
-        'Portfolio of Vijayraj Palanisamy: Senior Consultant at AstraZeneca and C#/.NET full-stack engineer with 15+ years of experience. Builder of AI products including PromptFlowEngine, CryptoTalkies and AIYouTubeManager.',
+        'Portfolio of Vijayraj Palanisamy: Senior Consultant and C#/.NET full-stack engineer with 15+ years of experience in enterprise software. Builder of AI products including PromptFlowEngine, CryptoTalkies and AIYouTubeManager.',
       canonical: `${SITE_URL}/`,
       image: OG_IMAGE,
       type: 'profile',

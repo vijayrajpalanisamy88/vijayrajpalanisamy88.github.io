@@ -10,7 +10,6 @@ export const navItems = [
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'ai', label: 'AI' },
-  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ];
 const ids = navItems.map((n) => n.id);
@@ -83,9 +82,6 @@ export function Header() {
           >
             <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
           </button>
-          <a href={profile.resumePdf} download className="btn btn-primary hidden !min-h-10 !px-4 sm:inline-flex">
-            <Icon name="download" size={16} /> Resume
-          </a>
           <button
             type="button"
             className="grid h-10 w-10 place-items-center rounded-lg text-muted hover:bg-surface-2 hover:text-fg lg:hidden"
@@ -109,11 +105,6 @@ export function Header() {
                 </Link>
               </li>
             ))}
-            <li className="col-span-2 sm:hidden">
-              <a href={profile.resumePdf} download className="btn btn-primary mt-1 w-full">
-                <Icon name="download" size={16} /> Download resume (PDF)
-              </a>
-            </li>
           </ul>
         </div>
       )}

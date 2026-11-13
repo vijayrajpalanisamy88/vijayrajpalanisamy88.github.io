@@ -32,7 +32,7 @@ test('visitor lands on the homepage and understands who this is', async ({ page 
   await expect(page).toHaveTitle(/Vijayraj Palanisamy/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Vijayraj Palanisamy');
   await expect(page.getByText('C#/.NET engineer building GenAI and Agentic AI products')).toBeVisible();
-  await expect(page.getByText('Senior Consultant, AstraZeneca').first()).toBeVisible();
+  await expect(page.getByText('Senior Consultant · Enterprise R&D IT').first()).toBeVisible();
   await expect(page.getByText('15+', { exact: true })).toBeVisible();
   // no horizontal scrolling at any viewport
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
@@ -79,7 +79,7 @@ test('visitor filters skills', async ({ page }) => {
   await expect(skills.locator('article li button')).toHaveCount(all);
   const bedrock = skills.getByRole('button', { name: /AWS Bedrock/ });
   await bedrock.click();
-  await expect(skills.getByRole('status')).toContainText('AstraZeneca');
+  await expect(skills.getByRole('status')).toContainText('Current role');
 });
 
 test('visitor filters projects by category and technology', async ({ page }) => {
@@ -147,20 +147,16 @@ test('visitor explores an architecture diagram', async ({ page }) => {
   await expect(explorer.getByRole('tab', { name: 'MSEW Infra Projects' })).toHaveAttribute('aria-selected', 'true');
 });
 
-test('visitor downloads the resume', async ({ page, request }) => {
-  const res = await request.get('/Vijayraj_Palanisamy_Resume.pdf');
-  expect(res.status()).toBe(200);
-  expect(res.headers()['content-type']).toContain('application/pdf');
-  expect((await res.body()).subarray(0, 5).toString()).toBe('%PDF-');
-
-  await page.goto('/#resume');
-  const link = page.getByTestId('resume-download');
-  await expect(link).toHaveAttribute('href', '/Vijayraj_Palanisamy_Resume.pdf');
-  await expect(link).toHaveAttribute('download', '');
-  if (test.info().project.name === 'chromium-desktop') {
-    const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
-    expect(download.suggestedFilename()).toBe('Vijayraj_Palanisamy_Resume.pdf');
+test('no resume download and no employer name anywhere (owner decision)', async ({ page, request }) => {
+  expect((await request.get('/Vijayraj_Palanisamy_Resume.pdf')).status()).toBe(404);
+  for (const path of ['/', '/projects/promptflowengine/', '/sitemap.xml']) {
+    const body = await (await request.get(path)).text();
+    expect(body, path).not.toMatch(/astra\s*zeneca|plate\s*maestro|appito/i);
   }
+  expect((await request.get('/projects/plate-maestro/')).status()).toBe(404);
+  await page.goto('/');
+  await expect(page.locator('a[download], a[href$=".pdf"]')).toHaveCount(0);
+  await expect(page.locator('#resume')).toHaveCount(0);
 });
 
 test('visitor finds GitHub and contact options', async ({ page }) => {
