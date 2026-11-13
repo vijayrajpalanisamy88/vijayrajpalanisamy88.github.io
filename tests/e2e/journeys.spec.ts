@@ -124,7 +124,13 @@ test('direct links to case studies work on refresh (prerendered)', async ({ page
 });
 
 test('unknown pages show a helpful not-found view', async ({ page }) => {
-  await page.goto('/projects/does-not-exist/');
+  const res = await page.goto('/projects/does-not-exist/');
+  // GitHub Pages answers 404 (correct for SEO); the browser logs that status as a console error, which is expected here
+  if (res?.status() === 404) {
+    const errs = (page as Page & { __errors: string[] }).__errors;
+    const i = errs.findIndex((e) => e.includes('status of 404'));
+    if (i >= 0) errs.splice(i, 1);
+  }
   await expect(page.getByRole('heading', { name: 'This page does not exist' })).toBeVisible();
 });
 
